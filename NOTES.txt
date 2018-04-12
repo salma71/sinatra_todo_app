@@ -16,9 +16,13 @@
 #UsersController
   [] set the route to work on the server
   [] build the CRUD at users
-    [] build signin get method
-    [] build signin form
-    [] back bottom
+    [x] build signin get method
+    [x] build signin form
+    [] build signout action
+    [x] build signup get method
+    [x] build signup form
+    [] signin submit action (post)
+    [] signup submit action (post)
   [x] use Rack::MethodOverride in config.ru
 [] build the CRUD at chores
 [] application is working according to the requirements
