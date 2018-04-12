@@ -2,7 +2,8 @@ class TodosController < ApplicationController
 
   # GET: /todos
   get "/todos" do
-    erb :"/todos/index.html"
+    @todos = Todo.all
+    erb :"/todos/todos.html"
   end
 
   # GET: /todos/new
