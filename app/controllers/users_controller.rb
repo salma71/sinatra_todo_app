@@ -1,19 +1,24 @@
 class UsersController < ApplicationController
 
-  # GET: /let the user to go for the sign-in page---done
+  # GET: /let the user to go for the sign-in page --done
   get "/signin" do
-    erb :"/users/index.html"
+    erb :"/users/signin.html"
   end
 
-  # GET: /let the user go for the sign-up page
+  # GET: /let the user go for the sign-up page --done
   get "/signup" do
     erb :"/users/new.html"
   end
 
-  # POST: /user_login
+  # POST: /send the sign-in info to the server and let the user to login
   post "/signin" do
-
-    redirect "/signin"
+    @user = User.find_by(:name => params[:name])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect '/todos'
+    else
+      redirect "/signup"
+    end
   end
 
   # GET: /users/5
