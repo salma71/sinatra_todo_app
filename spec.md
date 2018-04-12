@@ -2,10 +2,10 @@
 
 Specs:
 - [x] Use Sinatra to build the app
-- [ ] Use ActiveRecord for storing information in a database
-- [ ] Include more than one model class (list of model class names e.g. User, Post, Category)
-- [ ] Include at least one has_many relationship on your User model (x has_many y, e.g. User has_many Posts)
-- [ ] Include at least one belongs_to relationship on another model (x belongs_to y, e.g. Post belongs_to User)
+- [x] Use ActiveRecord for storing information in a database
+- [x] Include more than one model class (list of model class names e.g. User, Post, Category)
+- [x] Include at least one has_many relationship on your User model (x has_many y, e.g. User has_many Posts)
+- [x] Include at least one belongs_to relationship on another model (x belongs_to y, e.g. Post belongs_to User)
 - [ ] Include user accounts
 - [ ] Ensure that users can't modify content created by other users
 - [ ] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying

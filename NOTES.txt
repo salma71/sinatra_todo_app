@@ -1,11 +1,25 @@
+# My ToDo list for building my Sinatra application using MVC
+
 [X] structure the application files.
 [X] Migrate the db for users & chores.
-[X] test the main controller with welcome pape index.erb
+[X] test the main controller with welcome page index.erb
 [X] set the AC associations
-[] set login and current user methods
-[] build the CRUD at users
+  [x] belongs_to for the chores
+  [x] has_many for the user
+  [x] has_secure_password for the user
+# ApplicationController
+  [x] enable sessions
+  [x] set session_secret to a secret string
+  # set helper methods
+    [x] login
+    [x] current user
+#UsersController
+  [] set the route to work on the server
+  [] build the CRUD at users
+  [x] use Rack::MethodOverride in config.ru
 [] build the CRUD at chores
 [] application is working according to the requirements
+[] write down the README
 [] apply basic css
 [] write a blog post
 [] record the walkthrough
