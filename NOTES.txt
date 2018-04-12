@@ -1,7 +1,7 @@
 [X] structure the application files.
 [X] Migrate the db for users & chores.
 [X] test the main controller with welcome pape index.erb
-[] set the AC associations
+[X] set the AC associations
 [] set login and current user methods
 [] build the CRUD at users
 [] build the CRUD at chores
