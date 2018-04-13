@@ -1,13 +1,25 @@
 <h1>Insert the form to edit an instance of your model here.</h1>
 <h3>Edit for: <%= @todo.chore %></h3>
 
-<form action="/todos/<%= @todo.id %>/edit" method="POST">
+<!-- <form action="/todos/<%= @todo.id %>/edit" method="POST">
   <input type="hidden" name="_method" value="PATCH" />
-  <!-- <p>
-    <input type="text" name="name" value="<%= @todo.chore %>" />
-  </p> -->
+
   <p>
-    <input type="text" name="content" value="" />
+    <textarea type="text" name="content"></textarea>
   </p>
   <input type="submit" value="Edit" />
+</form> -->
+
+<form action="/todos/<%= @todo.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <textarea type="text" name="chore"></textarea>
+  <input type="submit" value="update">
 </form>
+
+
+<p>
+  <form action="/todos/<%= @todo.id %>/delete" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+  </form>
+</p>

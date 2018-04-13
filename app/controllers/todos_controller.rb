@@ -43,33 +43,30 @@ class TodosController < ApplicationController
     # else
     #   redirect "/signin"
     # end
-
   end
+
   # GET: /todos/5
-  get "/todos/:id" do
+  get "/todos/:id/edit" do
     @todo = Todo.find(params[:id])
     # there is no relation between this line and line 37 it just bcz of redirecting due to design
     # those two values are the end up equals
-    erb :"/todos/show.html"
-  end
-
-
-  # GET: /todos/5/edit
-  get "/todos/:id/edit" do
-    @todo = Todo.find(params[:id])
     erb :"/todos/edit.html"
   end
 
-  # update the todo : /todos/5
-  patch "/todos/:id/edit" do
+  # update the todo : /todos/5 -- there is a bug delete the post instead of updating it
+  patch "/todos/:id" do
     # raise params.inspect
     # fins the todo with the specific id
     @todo = Todo.find(params[:id])
-    @todo.chore = params[:chore]
-    @todo.save
+    # binding.pry
+    @todo.update(chore: params[:chore])
+    # binding.pry
       redirect "/todos"
   end
-
+  get "/todos/:id" do
+    @todo = Todo.find(params[:id])
+      erb :'/todos/edit.html'
+  end
   # DELETE: /todos/5/delete
   delete "/todos/:id/delete" do
     @todo = Todo.find(params[:id])
