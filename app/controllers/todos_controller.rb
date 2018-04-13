@@ -2,18 +2,39 @@ class TodosController < ApplicationController
 
   # GET: /todos
   get "/todos" do
-    @todos = Todo.all
-    erb :"/todos/todos.html"
+    if signed_in?
+      @todos = Todo.all
+      redirect "/todos/todos"
+    else
+      redirect "/signin"
+    end
+
+
   end
 
   # GET: /todos/new
   get "/todos/new" do
-    erb :"/todos/new.html"
+    if signed_in?
+      erb :"/todos/new.html"
+    else
+      redirect "/signin"
+    end
   end
 
   # POST: /todos
   post "/todos" do
-    redirect "/todos"
+    if signed_in?
+      if params[:chore].empty?
+        redirect "/todos/new"
+      else
+        @user = User.find_by(:id => session[:user_id])
+        @todo = Todo.create(chore: params[:chore], user_id: @user.id)
+        redirect "/todos"
+      end
+    else
+      redirect "/signin"
+    end
+
   end
 
   # GET: /todos/5
