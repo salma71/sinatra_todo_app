@@ -2,31 +2,32 @@
 class TodosController < ApplicationController
   # GET: /todos asking the server for the data in todo -- done
   get "/todos" do
-    if signed_in?
+    # if signed_in?
       @todos = Todo.all
+      # binding.pry
       erb :"todos/index.html"
-    else
-      redirect "/signin"
-    end
+    # else
+      # red/irect "/signin"
+    # end
   end
 
   # GET: /todos/new -- done
   get "/todos/new" do
-    if signed_in?
+    # if signed_in?
       erb :"/todos/new.html"
-    else
-      redirect "/signin"
-    end
+    # else
+      # redirect "/signin"
+    # end
   end
 
   # POST: /todos --- done
   post "/todos" do
     # raise params.inspect
     #params {"chore"=>"raise params inspect"}
-    if signed_in?
-      if params[:chore].empty?
-        redirect "/todos/new"
-      else
+    # if signed_in?
+    #   if params[:chore].empty?
+      #   redirect "/todos/new"
+      # else
         # @user = User.find_by(:id => session[:user_id])
         # create new instance of todo
         @todo = Todo.new
@@ -37,11 +38,11 @@ class TodosController < ApplicationController
         # todo = Todo.create(chore: params[:chore], user_id: @user.id)
         # redirect to the show page, HTTP is stateless means instance variable in one action
         # will ever never relates to instance variable in another action
-        redirect "/todos/#{@todo.id}"
-      end
-    else
-      redirect "/signin"
-    end
+        redirect "/todos"
+      # end
+    # else
+    #   redirect "/signin"
+    # end
 
   end
   # GET: /todos/5
@@ -59,8 +60,8 @@ class TodosController < ApplicationController
     erb :"/todos/edit.html"
   end
 
-  # PATCH: /todos/5
-  patch "/todos/:id" do
+  # update the todo : /todos/5
+  patch "/todos/:id/edit" do
     # raise params.inspect
     # fins the todo with the specific id
     @todo = Todo.find(params[:id])
@@ -71,6 +72,8 @@ class TodosController < ApplicationController
 
   # DELETE: /todos/5/delete
   delete "/todos/:id/delete" do
+    @todo = Todo.find(params[:id])
+    @todo.destroy
     redirect "/todos"
   end
 end

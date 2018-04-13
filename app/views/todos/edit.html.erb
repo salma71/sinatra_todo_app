@@ -1,7 +1,7 @@
 <h1>Insert the form to edit an instance of your model here.</h1>
 <h3>Edit for: <%= @todo.chore %></h3>
 
-<form action="/todos/<%= @todo.id %>" method="POST">
+<form action="/todos/<%= @todo.id %>/edit" method="POST">
   <input type="hidden" name="_method" value="PATCH" />
   <!-- <p>
     <input type="text" name="name" value="<%= @todo.chore %>" />
