@@ -29,30 +29,41 @@ class UsersController < ApplicationController
       #else create a new instance of user using params
       # set session[:user_id] to newly created user id
       #finally redirect the user to the todos list page
+      # binding.pry
       @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password])
       # binding.pry
       session[:user_id] = @user.id
       redirect "/todos"
     end
   end
-
-  # GET: /users/5
-  get "/users/:id" do
-    erb :"/users/show.html"
+  get "/signout" do
+    #if the user is logged in then clear the session and redirect to the /signin page
+    #else redirect to the /index page
+    if signed_in?
+      session.destroy
+      redirect "/signin"
+    else
+      redirect "/index"
+    end
   end
-
-  # GET: /users/5/edit
-  get "/users/:id/edit" do
-    erb :"/users/edit.html"
-  end
-
-  # PATCH: /users/5
-  patch "/users/:id" do
-    redirect "/users/:id"
-  end
-
-  # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/users"
-  end
+  # # GET: /users/5 show a user with specific id
+  # get "/users/:id" do
+  #   #if the user is signed in
+  #   erb :"/users/show.html"
+  # end
+  #
+  # # GET: /users/5/edit
+  # get "/users/:id/edit" do
+  #   erb :"/users/edit.html"
+  # end
+  #
+  # # PATCH: /users/5
+  # patch "/users/:id" do
+  #   redirect "/users/:id"
+  # end
+  #
+  # # DELETE: /users/5/delete
+  # delete "/users/:id/delete" do
+  #   redirect "/users"
+  # end
 end

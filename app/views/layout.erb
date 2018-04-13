@@ -15,7 +15,19 @@
 </head>
 <body>
   <div class="wrapper">
+    <nav>
+          <% if signed_in? %>
 
+            <button><a href="/todos/new"> Create New todo </a></button>
+            <button><a href="/signout"> Sign-Out </a></button>
+            <p>Welcome, <%=current_user.name %></p>
+
+          <% else %>
+            <button><a href="/signup">Sign-Up</a></button>
+            <button><a href="/signin"> Sign-In </a></button>
+          <%end %>
+
+        </nav>
       <%= yield %>
 
     <footer class="branding">

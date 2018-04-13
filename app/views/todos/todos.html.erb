@@ -1,1 +1,9 @@
-<h1>This is the Model's index page.</h1>
+<h1>Hello .</h1>
+<h3>Welcome to Your Todos List</h3>
+  <ol>
+  <% @todos.each do |todo|%>
+    <li><%=todo.chore%>
+    <%end%></li>
+  </ol>
+<br />
+  <input type="submit" value="signout">

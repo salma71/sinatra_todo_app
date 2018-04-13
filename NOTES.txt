@@ -18,13 +18,16 @@
   [] build the CRUD at users
     [x] build signin get method
     [x] build signin form
-    [] build signout action
+    [x] build signout action
     [x] build signup get method
     [x] build signup form
-    [] signin submit action (post)
-    [] signup submit action (post)
+    [x] signin submit action (post)
+    [x] signup submit action (post)
   [x] use Rack::MethodOverride in config.ru
 [] build the CRUD at chores
+  [] Welcome the user
+  [] show all chores via iterating over the collection
+  [] show the chores with checkboxes
 [] application is working according to the requirements
 [] write down the README
 [] apply basic css
