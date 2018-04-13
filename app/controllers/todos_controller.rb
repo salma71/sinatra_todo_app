@@ -1,10 +1,10 @@
 class TodosController < ApplicationController
 
-  # GET: /todos
+  # GET: /todos asking the server for the data in todo -- done 
   get "/todos" do
     if signed_in?
       @todos = Todo.all
-      redirect "/todos/todos"
+      erb :"todos/index.html"
     else
       redirect "/signin"
     end
@@ -12,7 +12,7 @@ class TodosController < ApplicationController
 
   end
 
-  # GET: /todos/new
+  # GET: /todos/new -- done
   get "/todos/new" do
     if signed_in?
       erb :"/todos/new.html"
@@ -21,7 +21,7 @@ class TodosController < ApplicationController
     end
   end
 
-  # POST: /todos
+  # POST: /todos --- Done
   post "/todos" do
     if signed_in?
       if params[:chore].empty?

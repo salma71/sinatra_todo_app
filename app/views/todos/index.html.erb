@@ -2,8 +2,12 @@
 <h3>Welcome to Your Todos List</h3>
   <ol>
   <% @todos.each do |todo|%>
-    <li><%=todo.chore%>
-    <%end%></li>
+    <li>
+      <a href="/todos/<%= todo.id%>">
+        <%=todo.chore%>
+      </a>
+    </li>
+    <%end%>
   </ol>
 <br />
   <input type="submit" value="signout">
