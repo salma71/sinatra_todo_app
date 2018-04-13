@@ -26,9 +26,12 @@
   [x] use Rack::MethodOverride in config.ru
 [] build the CRUD at chores
   [x] Welcome the user
-  [x] add new to do and save it
-  [] show all chores via iterating over the collection
+  [x] add new todo and save it
+  [x] show all chores via iterating over the collection
   [] show the chores with checkboxes
+  [x] can edit the ToDo
+  [] show todo after editing 
+  [] can delete the todo
 [] application is working according to the requirements
 [] write down the README
 [] apply basic css
