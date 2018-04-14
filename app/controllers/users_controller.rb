@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  get '/users' do
+    @users = User.all
+    erb :'/users/show.html'
+  end
   # GET: /let the user to go for the sign-in page --done
   get "/signin" do
     erb :"/users/signin.html"
@@ -46,16 +50,32 @@ class UsersController < ApplicationController
       redirect "/index"
     end
   end
-  # # GET: /users/5 show a user with specific id
-  # get "/users/:id" do
-  #   #if the user is signed in
-  #   erb :"/users/show.html"
+  # GET: /users/5 show a user with specific id
+  get "/users/:id" do
+    #if the user is signed in
+    @user = User.find(params[:id])
+    erb :"/users/edit.html"
+  end
+  patch "/users/:id" do
+    # raise params.inspect
+    # fins the todo with the specific id
+    @user = User.find(params[:id])
+    # binding.pry
+    @user.update(name: params[:name], email: params[:email])
+    # binding.pry
+      redirect "/users/#{@user.id}"
+  end
+  # get "/todos/:id" do
+  #   todo = Todo.find(params[:id])
+  #     erb :'/todos/edit.html'
   # end
   #
-  # # GET: /users/5/edit
+  # GET: /users/5/edit
   # get "/users/:id/edit" do
   #   erb :"/users/edit.html"
   # end
+  ###########
+
   #
   # # PATCH: /users/5
   # patch "/users/:id" do

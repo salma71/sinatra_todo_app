@@ -1,1 +1,15 @@
 <h1>This is the show page for an individual instance of your model.</h1>
+<h1></h1>
+<h3>Welcome to Your profile page</h3>
+  <ol>
+  <% @users.each do |user|%>
+    <li>
+      <%=user.name%><a href="/users/<%= user.id%>">
+        <br />
+        <%=user.email%>
+        <br />
+      </a>
+    </li>
+    <%end%>
+  </ol>
+<br />

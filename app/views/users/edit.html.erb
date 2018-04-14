@@ -1,1 +1,11 @@
 <h1>Insert the form to edit an instance of your model here.</h1>
+<h3>Edit for: <%= @user.name %></h3>
+<h3>Edit for: <%= @user.email %></h3>
+
+<form action="/users/<%= @user.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="text" name="name" />
+  <input type="text" name="email" />
+
+  <input type="submit" value="update">
+</form>
