@@ -1,4 +1,3 @@
-# working version
 class TodosController < ApplicationController
   # GET: /todos asking the server for the data in todo -- done
   get "/todos" do
@@ -38,6 +37,7 @@ class TodosController < ApplicationController
         # todo = Todo.create(chore: params[:chore], user_id: @user.id)
         # redirect to the show page, HTTP is stateless means instance variable in one action
         # will ever never relates to instance variable in another action
+        @todo.user_id = @user.id
         redirect "/todos"
       end
     else

@@ -34,8 +34,11 @@ class UsersController < ApplicationController
       # set session[:user_id] to newly created user id
       #finally redirect the user to the todos list page
       # binding.pry
+      # @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password])
+      # # binding.pry
+      # session[:user_id] = @user.id
       @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password])
-      # binding.pry
+      # @user.save
       session[:user_id] = @user.id
       redirect "/todos"
     end

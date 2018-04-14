@@ -1,11 +1,13 @@
 @media screen {
   /* --- Reset Styles --- */
-  * {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  button {
+    /* list-style: none; */
+    margin: 10px;
+    padding: 10px;
   }
-
+ /* textarea {
+   position: absolute;
+ } */
   html, body {
     height: 100%;
     width: 100%;
@@ -13,7 +15,7 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: green;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
@@ -68,7 +70,7 @@
     width: 30%; /* 240px / 800px */
   }
 
-  .sidebar ul {
+  .sidebar ol {
     font-size: 14px;
   }
 
