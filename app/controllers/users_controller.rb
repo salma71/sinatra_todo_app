@@ -68,25 +68,4 @@ class UsersController < ApplicationController
     # binding.pry
       redirect "/users/#{@user.id}"
   end
-  # get "/todos/:id" do
-  #   todo = Todo.find(params[:id])
-  #     erb :'/todos/edit.html'
-  # end
-  #
-  # GET: /users/5/edit
-  # get "/users/:id/edit" do
-  #   erb :"/users/edit.html"
-  # end
-  ###########
-
-  #
-  # # PATCH: /users/5
-  # patch "/users/:id" do
-  #   redirect "/users/:id"
-  # end
-  #
-  # # DELETE: /users/5/delete
-  # delete "/users/:id/delete" do
-  #   redirect "/users"
-  # end
 end

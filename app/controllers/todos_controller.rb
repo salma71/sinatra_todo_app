@@ -2,9 +2,9 @@ class TodosController < ApplicationController
   # GET: /todos asking the server for the data in todo -- done
   get "/todos" do
     if signed_in?
-      @todos = Todo.all
-      # binding.pry
-      erb :"todos/index.html"
+        @todos = Todo.all
+        # binding.pry
+        erb :"todos/index.html"
     else
       redirect "/signin"
     end
@@ -33,11 +33,12 @@ class TodosController < ApplicationController
         # set the name of chore
         @todo.chore = params[:chore]
         # finally save it
+        @todo.user_id = @user.id
         @todo.save
         # todo = Todo.create(chore: params[:chore], user_id: @user.id)
         # redirect to the show page, HTTP is stateless means instance variable in one action
         # will ever never relates to instance variable in another action
-        @todo.user_id = @user.id
+        # ser the todo id to the propeer one
         redirect "/todos"
       end
     else
@@ -58,6 +59,7 @@ class TodosController < ApplicationController
     # raise params.inspect
     # fins the todo with the specific id
     @todo = Todo.find(params[:id])
+    binding.pry
     # binding.pry
     @todo.update(chore: params[:chore])
     # binding.pry
