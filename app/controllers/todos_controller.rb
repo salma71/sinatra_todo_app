@@ -2,33 +2,33 @@
 class TodosController < ApplicationController
   # GET: /todos asking the server for the data in todo -- done
   get "/todos" do
-    # if signed_in?
+    if signed_in?
       @todos = Todo.all
       # binding.pry
       erb :"todos/index.html"
-    # else
-      # red/irect "/signin"
-    # end
+    else
+      redirect "/signin"
+    end
   end
 
   # GET: /todos/new -- done
   get "/todos/new" do
-    # if signed_in?
+    if signed_in?
       erb :"/todos/new.html"
-    # else
-      # redirect "/signin"
-    # end
+    else
+      redirect "/signin"
+    end
   end
 
   # POST: /todos --- done
   post "/todos" do
     # raise params.inspect
     #params {"chore"=>"raise params inspect"}
-    # if signed_in?
-    #   if params[:chore].empty?
-      #   redirect "/todos/new"
-      # else
-        # @user = User.find_by(:id => session[:user_id])
+    if signed_in?
+      if params[:chore].empty?
+        redirect "/todos/new"
+      else
+        @user = User.find_by(:id => session[:user_id])
         # create new instance of todo
         @todo = Todo.new
         # set the name of chore
@@ -39,10 +39,10 @@ class TodosController < ApplicationController
         # redirect to the show page, HTTP is stateless means instance variable in one action
         # will ever never relates to instance variable in another action
         redirect "/todos"
-      # end
-    # else
-    #   redirect "/signin"
-    # end
+      end
+    else
+      redirect "/signin"
+    end
   end
 
   # GET: /todos/5
