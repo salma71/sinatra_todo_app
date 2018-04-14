@@ -27,15 +27,14 @@
     [x] show all todos button in the nav bar
     [x] I can signin and signout with different users
   [x] use Rack::MethodOverride in config.ru
-[] build the CRUD at chores
+[x] build the CRUD at chores
   [x] Welcome the user
   [x] add new todo and save it
   [x] show all chores via iterating over the collection
-  [] show the chores with checkboxes
   [x] can edit the ToDo
   [x] show todo after editing
   [x] can delete the todo
-[] user can see his only related todos
+[x] user can see his only related todos
 [] application is working according to the requirements
 [] write down the README
 [] apply basic css

@@ -1,8 +1,13 @@
+# require 'rack-flash'
 class TodosController < ApplicationController
+  # use Rack::Flash
   # GET: /todos asking the server for the data in todo -- done
   get "/todos" do
     if signed_in?
-        @todos = Todo.all
+      @user = User.find(session[:user_id])
+      # Todo.where(name: name)
+      # @user = User.joins(:todos).where(todos: {user_id: @user})
+        @todos = Todo.todos
         # binding.pry
         erb :"todos/index.html"
     else
@@ -13,6 +18,7 @@ class TodosController < ApplicationController
   # GET: /todos/new -- done
   get "/todos/new" do
     if signed_in?
+      @user = User.find_by(id: session[:user_id])
       erb :"/todos/new.html"
     else
       redirect "/signin"
@@ -24,6 +30,9 @@ class TodosController < ApplicationController
     # raise params.inspect
     #params {"chore"=>"raise params inspect"}
     if signed_in?
+      @user = User.find(session[:user_id])
+      # binding.pry
+
       if params[:chore].empty?
         redirect "/todos/new"
       else
@@ -48,6 +57,7 @@ class TodosController < ApplicationController
 
   # GET: /todos/5
   get "/todos/:id/edit" do
+    @user = User.find_by(id: session[:user_id])
     @todo = Todo.find(params[:id])
     # there is no relation between this line and line 37 it just bcz of redirecting due to design
     # those two values are the end up equals
@@ -56,10 +66,11 @@ class TodosController < ApplicationController
 
   # update the todo : /todos/5 -- there is a bug delete the post instead of updating it
   patch "/todos/:id" do
+    User.find_by(id: session[:user_id]) if session[:user_id]
     # raise params.inspect
     # fins the todo with the specific id
     @todo = Todo.find(params[:id])
-    binding.pry
+    # binding.pry
     # binding.pry
     @todo.update(chore: params[:chore])
     # binding.pry
@@ -71,6 +82,7 @@ class TodosController < ApplicationController
   end
   # DELETE: /todos/5/delete
   delete "/todos/:id/delete" do
+    User.find_by(id: session[:user_id]) if session[:user_id]
     @todo = Todo.find(params[:id])
     @todo.destroy
     redirect "/todos"

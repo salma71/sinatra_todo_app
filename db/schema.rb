@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20180412143646) do
 
   create_table "todos", force: :cascade do |t|
-    t.string   "chore"
+    t.string   "todos"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
