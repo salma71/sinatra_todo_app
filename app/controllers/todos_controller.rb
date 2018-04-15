@@ -5,12 +5,7 @@ class TodosController < ApplicationController
   get "/todos" do
     if signed_in?
       @user = User.find(session[:user_id])
-      # Todo.where(name: name)
-      # @user = User.joins(:todos).where(todos: {user_id: @user})
         @todos = Todo.where(user_id: current_user)
-        # Todo.find_or_create_by(@user.id)
-        # find_by
-        # binding.pry
         # binding.pry
         erb :"todos/index.html"
     else

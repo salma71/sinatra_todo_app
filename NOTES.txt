@@ -35,8 +35,9 @@
   [x] show todo after editing
   [x] can delete the todo
 [x] user can see his only related todos
-[] application is working according to the requirements
-[] write down the README
+[x] redirect to an signup page to if the input is invalid data
+[x] application is working according to the requirements
+[x] write down the README
 [] apply basic css
 [] write a blog post
 [] record the walkthrough
