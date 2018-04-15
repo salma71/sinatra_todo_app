@@ -1,7 +1,7 @@
 <h1></h1>
 <h1>Welcome to Your Todos List</h1>
   <ol>
-  <% @todos.each do |todo|%>
+  <% Array(@todos).each do |todo|%>
     <li>
       <a href="/todos/<%= todo.id%>">
         <%=todo.chore%>
