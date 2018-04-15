@@ -1,12 +1,12 @@
-# require 'rack-flash'
 class TodosController < ApplicationController
-  # use Rack::Flash
   # GET: /todos asking the server for the data in todo -- done
   get "/todos" do
+    # if the user is signed in?
     if signed_in?
+      # then find the user who's session params = to user_id
       @user = User.find(session[:user_id])
+      # finally disply the todo list where user_id = to current user
         @todos = Todo.where(user_id: current_user)
-        # binding.pry
         erb :"todos/index.html"
     else
       redirect "/signin"

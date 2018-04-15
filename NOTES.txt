@@ -39,7 +39,7 @@
 [x] application is working according to the requirements
 [x] write down the README
 [x] apply basic css
-[] write a blog post
-[] record the walkthrough
-[] final commit "I am done"
+[x] write a blog post
+[x] record the walkthrough
+[x] final commit "I am done"
 [] submit and schedule assessment
