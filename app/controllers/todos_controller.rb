@@ -76,7 +76,7 @@ class TodosController < ApplicationController
   end
   get "/todos/:id" do
     @todo = Todo.find(params[:id])
-      erb :'/todos/edit.html'
+      erb :'/todos/show.html'
   end
   # DELETE: /todos/5/delete
   delete "/todos/:id/delete" do
