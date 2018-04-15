@@ -74,9 +74,13 @@ class TodosController < ApplicationController
     # binding.pry
       redirect "/todos"
   end
+  # get "/todos/:id" do
+  #   @todo = Todo.find(params[:id])
+  #     erb :'/todos/edit.html'
+  # end
   get "/todos/:id" do
     @todo = Todo.find(params[:id])
-      erb :'/todos/show.html'
+      erb :'/todos/edit.html'
   end
   # DELETE: /todos/5/delete
   delete "/todos/:id/delete" do
