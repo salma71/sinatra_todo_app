@@ -31,14 +31,16 @@ class TodosController < ApplicationController
       @user = User.find(session[:user_id])
       # binding.pry
 
-      if params[:chore].empty?
-        redirect "/todos/new"
-      else
-        @user = User.find_by(:id => session[:user_id])
+      # if params[:chore].empty?
+      #   redirect "/todos/new"
+      # else
+        # @user = User.find_by(:id => sess ion[:user_id])
         # create new instance of todo
-        @todo = Todo.new
+        @todo = Todo.new(params[:todo]) #mass assignment
+        # binding.pry
+
         # set the name of chore
-        @todo.chore = params[:chore]
+        # @todo.chore = params[:chore]
         # finally save it
         @todo.user_id = @user.id
         @todo.save
@@ -47,7 +49,7 @@ class TodosController < ApplicationController
         # will ever never relates to instance variable in another action
         # ser the todo id to the propeer one
         redirect "/todos"
-      end
+      # end
     else
       redirect "/signin"
     end
@@ -69,8 +71,7 @@ class TodosController < ApplicationController
     # fins the todo with the specific id
     @todo = Todo.find(params[:id])
     # binding.pry
-    # binding.pry
-    @todo.update(chore: params[:chore])
+    @todo.update(params[:todo])
     # binding.pry
       redirect "/todos"
   end

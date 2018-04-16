@@ -18,4 +18,8 @@ The application is designed to let the user to :
  - run shotgun to open the app
  - open the local host in your web browser
  - start by hitting sign-up button
-**Note** You have to enter a proper email to be allowed to signup to the application.
+
+
+> **Note** You have to enter a proper email to be allowed to signup to the application.
+
+### You can read how I did this App step by step by visiting this link <http://www.example.com>

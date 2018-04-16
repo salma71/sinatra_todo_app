@@ -12,7 +12,7 @@
 
 <form action="/todos/<%= @todo.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <textarea type="text" name="chore"></textarea>
+  <textarea type="text" name="todo[chore]" value="<%=@todo.chore%>"></textarea>
   <input type="submit" value="update">
 </form>
 

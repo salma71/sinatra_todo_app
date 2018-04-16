@@ -27,14 +27,14 @@ class UsersController < ApplicationController
   #POST:/send the signup infor to the serverand let the user to create account
   post "/signup" do
     # if one of the entry field is empty direct to the signup page
-    if params[:name].empty? || params[:email].empty? || params[:password].empty?
+    if params[:user].empty?
       redirect "/signup"
     else
       #else create a new instance of user using params
       # set session[:user_id] to newly created user id
       #finally redirect the user to the todos list page
       # binding.pry
-      @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password])
+      @user = User.create(params[:user])
       # @user.save
       session[:user_id] = @user.id
       redirect "/todos"
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     # fins the todo with the specific id
     @user = User.find(params[:id])
     # binding.pry
-    @user.update(name: params[:name], email: params[:email])
+    @user.update(params[:user])
     # binding.pry
       redirect "/users/#{@user.id}"
   end

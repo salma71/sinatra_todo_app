@@ -4,8 +4,8 @@
 
 <form action="/users/<%= @user.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <input type="text" name="name" />
-  <input type="text" name="email" />
+  <input type="text" name="user[name]" />
+  <input type="text" name="user[email]" />
 
   <input type="submit" value="update">
 </form>
