@@ -1,25 +1,8 @@
 <h1>Editing your ToDo</h1>
-<h3>Edit for: <%= @todo.chore %></h3>
-
-<!-- <form action="/todos/<%= @todo.id %>/edit" method="POST">
-  <input type="hidden" name="_method" value="PATCH" />
-
-  <p>
-    <textarea type="text" name="content"></textarea>
-  </p>
-  <input type="submit" value="Edit" />
-</form> -->
+<h3>Edit for: <h2 class="confirm"><%= @todo.chore %></h2></h3>
 
 <form action="/todos/<%= @todo.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <textarea type="text" name="chore"></textarea>
   <input type="submit" value="update">
 </form>
-
-
-<p>
-  <form action="/todos/<%= @todo.id %>/delete" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-  </form>
-</p>

@@ -6,7 +6,9 @@ class TodosController < ApplicationController
       # then find the user who's session params = to user_id
       @user = User.find(session[:user_id])
       # finally disply the todo list where user_id = to current user
+
         @todos = Todo.where(user_id: current_user)
+        # binding.pry
         erb :"todos/index.html"
     else
       redirect "/signin"
@@ -42,6 +44,7 @@ class TodosController < ApplicationController
         # finally save it
         @todo.user_id = @user.id
         @todo.save
+
         # todo = Todo.create(chore: params[:chore], user_id: @user.id)
         # redirect to the show page, HTTP is stateless means instance variable in one action
         # will ever never relates to instance variable in another action
@@ -52,41 +55,61 @@ class TodosController < ApplicationController
       redirect "/signin"
     end
   end
-
+  get '/todos/:id' do
+    if signed_in?
+      @todo = Todo.find(params[:id])
+      # binding.pry
+      erb :'/todos/show.html'
+    else
+      redirect '/signin'
+    end
+  end
   # GET: /todos/5
   get "/todos/:id/edit" do
     @user = User.find_by(id: session[:user_id])
     @todo = Todo.find(params[:id])
+    if @todo && @todo.user == current_user
+
     # there is no relation between this line and line 37 it just bcz of redirecting due to design
     # those two values are the end up equals
     erb :"/todos/edit.html"
+    else
+      redirect "/signin"
+    end
+  end
+  patch '/todos/:id' do
+    if signed_in?
+      if params[:chore].empty?
+        redirect "/todos/#{params[:id]}/edit"
+      else
+        @todo = Todo.find_by_id(params[:id])
+        if @todo && @todo.user == current_user
+          if @todo.update(:chore => params[:chore])
+            redirect to "/todos/#{@todo.id}"
+          else
+          redirect to "/todos/#{@todo.id}/edit"
+          end
+        else
+          redirect to '/todos'
+        end
+      end
+    else
+      redirect '/signin'
+    end
   end
 
-  # update the todo : /todos/5 -- there is a bug delete the post instead of updating it
-  patch "/todos/:id" do
-    User.find_by(id: session[:user_id]) if session[:user_id]
-    # raise params.inspect
-    # fins the todo with the specific id
-    @todo = Todo.find(params[:id])
-    # binding.pry
-    # binding.pry
-    @todo.update(chore: params[:chore])
-    # binding.pry
-      redirect "/todos"
-  end
-  # get "/todos/:id" do
-  #   @todo = Todo.find(params[:id])
-  #     erb :'/todos/edit.html'
-  # end
-  get "/todos/:id" do
-    @todo = Todo.find(params[:id])
-      erb :'/todos/edit.html'
-  end
-  # DELETE: /todos/5/delete
-  delete "/todos/:id/delete" do
-    User.find_by(id: session[:user_id]) if session[:user_id]
-    @todo = Todo.find(params[:id])
-    @todo.destroy
-    redirect "/todos"
-  end
+  delete '/todos/:id/delete' do
+   if signed_in?
+     @user = User.find_by(id: session[:user_id]) if session[:user_id]
+     @todo = Todo.find_by_id(params[:id])
+     # binding.pry
+     if @todo && @todo.user == current_user
+       @todo.delete
+       redirect '/todos'
+     end
+   #   redirect to '/todos'
+   else
+     redirect to '/signin'
+   end
+ end
 end
