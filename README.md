@@ -14,8 +14,10 @@ The application is designed to let the user to :
 ## Running the app
  - fork and clone this repo.
  - cd the directory from the terminal
- - in the terminal run bundle install to install all required gems
- - run shotgun to open the app
+ - in the terminal run ```bundle install``` to install all required gems
+ - run ```shotgun``` to open the app
  - open the local host in your web browser
  - start by hitting sign-up button
-**Note** You have to enter a proper email to be allowed to signup to the application.
+>**Note** You have to enter a proper email to be allowed to signup to the application.
+
+![The MVC structure](https://drive.google.com/file/d/1eCH6Vi1swdqK60uP9jl0oydH7K0R44yb/view?usp=sharing)
