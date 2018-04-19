@@ -3,6 +3,6 @@
 
 <form action="/todos/<%= @todo.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <textarea type="text" name="chore"></textarea>
+  <textarea type="text" name="chore" placeholder="Updated todo text"></textarea>
   <input type="submit" value="update">
 </form>

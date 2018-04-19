@@ -107,7 +107,6 @@ class TodosController < ApplicationController
        @todo.delete
        redirect '/todos'
      end
-   #   redirect to '/todos'
    else
      redirect to '/signin'
    end

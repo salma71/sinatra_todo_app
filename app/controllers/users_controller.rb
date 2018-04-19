@@ -1,8 +1,26 @@
 class UsersController < ApplicationController
 
   get '/users' do
-    @users = User.all
-    erb :'/users/show.html'
+    if signed_in?
+      # then find the user who's session params = to user_id
+      @user = User.find(session[:user_id])
+      # finally disply the todo list where user_id = to current user
+
+        # @user = User.where(user_id: current_user)
+        # binding.pry
+        erb :"users/show.html"
+    else
+      redirect "/signin"
+    end
+  end
+  get '/users/:id' do
+    if signed_in?
+      @user = User.find(params[:id])
+      # binding.pry
+      erb :'/users/show.html'
+    else
+      redirect '/signin'
+    end
   end
   # GET: /let the user to go for the sign-in page --done
   get "/signin" do
@@ -50,19 +68,47 @@ class UsersController < ApplicationController
       redirect "/index"
     end
   end
+
   # GET: /users/5 show a user with specific id
-  get "/users/:id" do
-    #if the user is signed in
-    @user = User.find(params[:id])
+  get "/users/:id/edit" do
+    @user = User.find_by(id: session[:user_id])
+    if @user
+
+    # there is no relation between this line and line 37 it just bcz of redirecting due to design
+    # those two values are the end up equals
     erb :"/users/edit.html"
+    else
+      redirect "/signin"
+    end
   end
-  patch "/users/:id" do
-    # raise params.inspect
-    # fins the todo with the specific id
-    @user = User.find(params[:id])
+  patch '/users/:id' do
     # binding.pry
-    @user.update(name: params[:name], email: params[:email])
-    # binding.pry
-      redirect "/users/#{@user.id}"
+    if signed_in?
+      if params[:name].empty?
+        redirect "/users/#{params[:id]}/edit"
+      else
+        @user = User.find_by_id(params[:id])
+        if @user == current_user
+          if @user.update(:name => params[:name], :email => params[:email])
+            redirect to "/users/#{@user.id}"
+          else
+          redirect to "/users/#{@user.id}/edit"
+          end
+        else
+          redirect to '/users'
+        end
+      end
+    else
+      redirect '/signin'
+    end
   end
+  # patch "/users/:id" do
+  #   # raise params.inspect
+  #   # fins the todo with the specific id
+  #   @user = User.find(params[:id])
+  #   # binding.pry
+  #   @user.update(name: params[:name], email: params[:email])
+  #   # binding.pry
+  #     redirect "/users/#{@user.id}"
+  # end
 end
