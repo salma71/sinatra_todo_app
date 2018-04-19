@@ -22,7 +22,7 @@
             <button><a href="/signout"> Sign-Out </a></button>
             <button><a href="/users/<%=current_user.id %>"> Edit-Profile </a></button>
             <button><a href="/todos"> Show-My-ToDos </a></button>
-            <p>Welcome, <%=current_user.name %></p>
+            <p>Welcome, <strong><%=current_user.name.upcase %></strong></p>
 
           <% else %>
             <button><a href="/signup">Sign-Up</a></button>
