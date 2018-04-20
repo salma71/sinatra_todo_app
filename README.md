@@ -20,4 +20,4 @@ The application is designed to let the user to :
  - start by hitting sign-up button
 >**Note** You have to enter a proper email to be allowed to signup to the application.
 
-![The MVC structure](<blockquote class="imgur-embed-pub" lang="en" data-id="a/K3Cp5mk"><a href="//imgur.com/K3Cp5mk"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>)
+![The MVC structure](https://imgur.com/a/K3Cp5mk)
