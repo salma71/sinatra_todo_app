@@ -24,12 +24,20 @@ class UsersController < ApplicationController
   end
   # GET: /let the user to go for the sign-in page --done
   get "/signin" do
-    erb :"/users/signin.html"
+    if signed_in?
+      redirect '/todos'
+    else
+      erb :"/users/signin.html"
+    end
   end
 
   # GET: /let the user go for the sign-up page --done
   get "/signup" do
-    erb :"/users/new.html"
+    if signed_in?
+      redirect '/todos'
+    else
+      erb :"/users/new.html"
+    end
   end
 
   # POST: /send the sign-in info to the server and let the user to login

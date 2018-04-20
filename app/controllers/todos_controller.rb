@@ -57,9 +57,14 @@ class TodosController < ApplicationController
   end
   get '/todos/:id' do
     if signed_in?
+      # @user = User.find_by(id: session[:user_id])
       @todo = Todo.find(params[:id])
+      if @todo && @todo.user == current_user
       # binding.pry
       erb :'/todos/show.html'
+    else
+      redirect "/signin"
+    end
     else
       redirect '/signin'
     end
@@ -74,7 +79,7 @@ class TodosController < ApplicationController
     # those two values are the end up equals
     erb :"/todos/edit.html"
     else
-      redirect "/signin"
+      redirect "/todos"
     end
   end
   patch '/todos/:id' do

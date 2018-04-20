@@ -20,4 +20,4 @@ The application is designed to let the user to :
  - start by hitting sign-up button
 >**Note** You have to enter a proper email to be allowed to signup to the application.
 
-![The MVC structure](https://drive.google.com/file/d/1eCH6Vi1swdqK60uP9jl0oydH7K0R44yb/view?usp=sharing)
+![The MVC structure](https://imgur.com/a/K3Cp5mk)
