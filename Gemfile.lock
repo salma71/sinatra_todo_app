@@ -39,6 +39,8 @@ GEM
     eventmachine (1.2.5)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
+    mail (2.7.0)
+      mini_mime (>= 0.1.1)
     method_source (0.9.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
@@ -46,7 +48,9 @@ GEM
     mustermann (1.0.2)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
-    pg (1.0.0)
+    pg (0.15.0)
+    pony (1.12)
+      mail (>= 2.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -116,7 +120,8 @@ DEPENDENCIES
   bcrypt
   capybara
   database_cleaner!
-  pg
+  pg (= 0.15)
+  pony
   pry
   rack-test
   rake
@@ -129,6 +134,9 @@ DEPENDENCIES
   sqlite3
   thin
   tux
+
+RUBY VERSION
+   ruby 2.3.3p222
 
 BUNDLED WITH
    1.16.1
