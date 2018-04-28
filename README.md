@@ -21,4 +21,6 @@ The application is designed to let the user to :
 >**Note** You have to enter a proper email to be allowed to signup to the application.
 
 [The MVC structure](https://imgur.com/a/K3Cp5mk)
+
+
 [You can try the app on Heroku](https://boiling-depths-96093.herokuapp.com/)
