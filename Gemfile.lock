@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/bmabey/database_cleaner.git
-  revision: 6957554ad53df15609db66a9e1aaf8dd86ff8059
+  revision: aa7ac5c753d905f231abaa5073fc1ebc524a93a6
   specs:
-    database_cleaner (1.6.3)
+    database_cleaner (1.7.0)
 
 GEM
   remote: http://rubygems.org/
@@ -46,11 +46,12 @@ GEM
     mustermann (1.0.2)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    pg (1.0.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.2)
-    rack (2.0.4)
+    rack (2.0.5)
     rack-protection (2.0.1)
       rack
     rack-test (1.0.0)
@@ -115,6 +116,7 @@ DEPENDENCIES
   bcrypt
   capybara
   database_cleaner!
+  pg
   pry
   rack-test
   rake

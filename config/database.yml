@@ -1,0 +1,9 @@
+development:
+  adapter: sqlite3
+  database: database.db
+test:
+  adapter: sqlite3
+  database: database.db
+production:
+  adapter: postgresql
+  database: sch_database mydb
